@@ -39,7 +39,7 @@ Geração do E-mail
         ↓
 Cliente recebe o resultado
 ```
-Etapas da Automação
+# Etapas da Automação
 O usuário acessa o formulário de busca.
 Seleciona o critério desejado.
 Digita a informação que deseja buscar.
@@ -49,7 +49,7 @@ O n8n consulta a base de veículos no Google Sheets.
 Os veículos encontrados são enviados para o Gemini AI.
 A Inteligência Artificial gera um e-mail personalizado.
 O e-mail é enviado automaticamente para o usuário.
-🧠 Inteligência Artificial
+# 🧠 Inteligência Artificial
 
 O projeto utiliza o Gemini AI para transformar os dados dos veículos encontrados em um e-mail de vendas profissional, atrativo e personalizado.
 
@@ -74,7 +74,7 @@ Disponibilidade
 
 Caso nenhum veículo seja encontrado, a Inteligência Artificial gera uma mensagem alternativa incentivando o cliente a entrar em contato e conhecer outras opções disponíveis.
 
-🛠️ Tecnologias Utilizadas
+# 🛠️ Tecnologias Utilizadas
 n8n
 Google Sheets
 Gemini AI
@@ -82,7 +82,7 @@ Gmail
 Formulário Web
 Inteligência Artificial Generativa
 Automação de Processos
-📊 Base de Dados
+# 📊 Base de Dados
 
 A base de dados utilizada no projeto foi criada utilizando o Google Sheets.
 
@@ -95,7 +95,7 @@ Modelo	Modelo do veículo
 Ano	Ano do veículo
 Cor	Cor do veículo
 Valor	Valor do veículo
-🎯 Objetivo
+# 🎯 Objetivo
 
 O objetivo deste projeto é demonstrar como a automação de processos e a Inteligência Artificial podem ser utilizadas para melhorar a comunicação entre empresas e clientes.
 
@@ -107,7 +107,7 @@ Comunicação com clientes
 Geração de e-mails
 Atendimento inicial
 Divulgação de produtos
-🚀 Possíveis Melhorias Futuras
+# 🚀 Possíveis Melhorias Futuras
 
 O projeto pode ser expandido com novas funcionalidades, como:
 
@@ -121,7 +121,7 @@ Recomendações inteligentes de veículos
 Agendamento automático de test-drive
 Chatbot com Inteligência Artificial
 Integração com sites de concessionárias
-💡 Possíveis Aplicações
+#💡 Possíveis Aplicações
 
 Esta automação pode ser adaptada para diferentes tipos de empresas e negócios.
 
@@ -135,7 +135,7 @@ Empresas de vendas
 
 A mesma ideia também pode ser adaptada para outros segmentos, permitindo que clientes pesquisem produtos e recebam automaticamente informações personalizadas por e-mail.
 
-👨‍💻 Autor
+# 👨‍💻 Autor
 
 Paulo Vitor
 
@@ -147,7 +147,7 @@ n8n
 IoT
 Sistemas Inteligentes
 Integração de Sistemas
-📫 Contato
+# 📫 Contato
 
 Caso queira trocar ideias sobre automação, Inteligência Artificial, IoT ou tecnologia, fique à vontade para entrar em contato.
 
