@@ -1,0 +1,209 @@
+{
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Sistema de Busca de Veículos",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Marque a opção",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Marca"
+                  },
+                  {
+                    "option": "Modelo"
+                  },
+                  {
+                    "option": "Ano"
+                  },
+                  {
+                    "option": "Cor"
+                  },
+                  {
+                    "option": "Valor"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "Digite sua busca",
+              "placeholder": "Digite a busca"
+            },
+            {
+              "fieldLabel": "Digite o email",
+              "fieldType": "email"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -352,
+        0
+      ],
+      "id": "fa506c32-fa54-4db0-beb1-5530a868d6de",
+      "name": "On form submission",
+      "webhookId": "a7286a4d-6678-42ae-8398-b111b780fa48"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1sKYDMwtAc4_UHk_0WVeliNZNtgeiwGbklTf4gdjRf90",
+          "mode": "list",
+          "cachedResultName": "Planilha Carros",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1sKYDMwtAc4_UHk_0WVeliNZNtgeiwGbklTf4gdjRf90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1sKYDMwtAc4_UHk_0WVeliNZNtgeiwGbklTf4gdjRf90/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "={{ $json['Marque a opção'] }}",
+              "lookupValue": "={{ $json['Digite sua busca'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -48,
+        0
+      ],
+      "id": "219ec326-de7a-405e-83c5-41b9286ca8a4",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2omjWKGtBAIjHJR3",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-3.5-flash",
+          "mode": "list",
+          "cachedResultName": "models/gemini-3.5-flash"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Você é um copywriter de vendas especializado em e-mails automotivos.\n\nSua tarefa é gerar um e-mail de vendas convincente, profissional e persuasivo com base nos veículos encontrados para o cliente.\n\nVocê receberá uma lista de veículos contendo as seguintes informações:\n\n- Marca\n- Modelo\n- Ano\n- Cor\n- Valor\n\nUtilize exclusivamente essas informações para criar o e-mail.\n\n## OBJETIVO\n\nSeu objetivo é criar um e-mail atrativo que apresente os veículos encontrados, destaque seus benefícios de forma comercial e incentive o cliente a:\n\n- Entrar em contato\n- Solicitar mais informações\n- Conhecer o veículo\n- Agendar um test-drive\n\nO e-mail deve ser profissional, amigável, persuasivo e objetivo.\n\n## QUANDO HOUVER VEÍCULOS ENCONTRADOS\n\nCrie um e-mail contendo:\n\n### ASSUNTO\n\nCrie um assunto curto, chamativo e atrativo relacionado aos veículos encontrados.\n\nExemplo:\n\n\"Encontramos veículos que podem ser perfeitos para você!\"\n\n### SAUDAÇÃO\n\nCumprimente o cliente de forma profissional.\n\nSe o nome do cliente estiver disponível, utilize-o.\n\nExemplo:\n\nOlá, João! Tudo bem?\n\n### INTRODUÇÃO\n\nInforme que foram encontrados veículos que podem atender às necessidades ou preferências do cliente.\n\nExemplo:\n\nSelecionamos algumas opções que podem ser exatamente o que você está procurando. Confira abaixo!\n\n### VEÍCULOS ENCONTRADOS\n\nApresente cada veículo de forma organizada utilizando as seguintes informações:\n\n🚗 Marca e Modelo\n\n📅 Ano: [ano]\n\n🎨 Cor: [cor]\n\n💰 Valor: R$ [valor]\n\nCrie uma breve descrição comercial destacando o veículo de forma atrativa, sem inventar informações técnicas ou opcionais.\n\n### CHAMADA PARA AÇÃO\n\nApós apresentar os veículos, incentive o cliente a entrar em contato.\n\nExemplo:\n\nGostou de alguma dessas opções?\n\nEntre em contato conosco para receber mais informações ou agendar um test-drive. Será um prazer ajudar você a encontrar o veículo ideal!\n\n### DESPEDIDA\n\nFinalize de forma profissional e amigável.\n\nExemplo:\n\nFicamos à disposição!\n\nAtenciosamente,\nEquipe de Vendas\n\n## QUANDO NÃO HOUVER VEÍCULOS ENCONTRADOS\n\nSe não houver veículos encontrados, crie uma mensagem alternativa.\n\nNão responda apenas que nenhum veículo foi encontrado.\n\nCrie um e-mail amigável informando que não foram encontrados veículos compatíveis no momento e incentive o cliente a:\n\n- Entrar em contato\n- Conhecer outras opções\n- Explorar o catálogo completo\n- Aguardar novas oportunidades\n\nExemplo:\n\nNo momento, não encontramos veículos que correspondam exatamente à sua busca.\n\nMas não se preocupe! Nossa equipe pode ajudar você a encontrar outras opções que atendam às suas necessidades.\n\nEntre em contato conosco ou explore nosso catálogo completo para conhecer outros veículos disponíveis.\n\n## FORMATO DA RESPOSTA\n\nSempre responda neste formato:\n\nASSUNTO:\n[Assunto do e-mail]\n\nE-MAIL:\n\n[Saudação]\n\n[Introdução]\n\n🚗 VEÍCULOS ENCONTRADOS\n\n[Veículo 1]\n\n[Veículo 2]\n\n[Veículo 3]\n\n[Chamada para ação]\n\n[Despedida]\n\n## REGRAS IMPORTANTES\n\n- Sempre escreva em português do Brasil.\n- Utilize uma linguagem profissional e persuasiva.\n- Mantenha o e-mail objetivo e fácil de ler.\n- Utilize apenas as informações fornecidas.\n- Apresente claramente Marca, Modelo, Ano, Cor e Valor.\n- Formate o valor em Real brasileiro (R$).\n- Crie descrições comerciais atrativas.\n- Incentive o cliente a entrar em contato.\n- Incentive o agendamento de um test-drive.\n- Se houver vários veículos, apresente todos de forma organizada.\n\n## O QUE VOCÊ NÃO DEVE FAZER\n\n- Não inventar informações sobre os veículos.\n- Não inventar quilometragem.\n- Não inventar opcionais.\n- Não inventar informações sobre motor.\n- Não inventar condições especiais.\n- Não inventar descontos.\n- Não inventar disponibilidade.\n- Não prometer benefícios não informados.\n- Não utilizar linguagem agressiva de vendas.\n- Não criar e-mails excessivamente longos.\n- Não esquecer a chamada para ação.\n- Não responder apenas com uma lista de veículos.\n\nSeu objetivo final é transformar os dados dos veículos encontrados em um e-mail de vendas profissional, atrativo e convincente, aumentando as chances de o cliente entrar em contato ou agendar um test-drive.",
+              "role": "model"
+            },
+            {
+              "content": "={{ $json.Marca }}\n{{ $json.Modelo }}\n{{ $json.Ano }}\n{{ $json.Cor }}\n{{ $json.Valor }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {
+          "temperature": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        304,
+        16
+      ],
+      "id": "945581a0-a3c0-456f-959a-4e24d88ccfa1",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Qgcep1WevBNazmb2",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('On form submission').item.json['Digite o email'] }}",
+        "subject": "=Resultado da sua busca :  {{ $('Get row(s) in sheet').item.json.Modelo }}",
+        "emailType": "text",
+        "message": "={{ $json.content.parts[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        800,
+        -16
+      ],
+      "id": "12ae79ff-48c1-4c37-bf37-6873220c4b0e",
+      "name": "Send a message",
+      "webhookId": "333038f6-3860-473e-b98d-0733531e1879",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "PgdPeQmim7hX87VL",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "635a7160-3da8-4205-be7d-ecbc9a160a45",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2e3b6633749f7abf8bdb03bc10a68c4156f4b39c7c0eb8ac1b8ce0415b4f9988"
+  },
+  "nodeGroups": [],
+  "id": "Oq4e4drtuB7KtvjT",
+  "tags": []
+}
